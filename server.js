@@ -38,7 +38,7 @@ app.use(cors());
 
 app.get ('/', (req, res) => {
     // res.send(database.users)
-    res.send('aplicacion trabajando adecuadamente!')
+    res.send('server de la aplicacion trabajando adecuadamente!')
 })
 
 app.post('/signin', signin.handleSignin(db, bcrypt))
