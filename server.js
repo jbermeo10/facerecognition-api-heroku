@@ -38,7 +38,7 @@ app.use(cors());
 
 app.get ('/', (req, res) => {
     // res.send(database.users)
-    res.send('success')
+    res.send('aplicacion trabajando adecuadamente!')
 })
 
 app.post('/signin', signin.handleSignin(db, bcrypt))
@@ -62,9 +62,9 @@ app.delete('/deleteuser', (req, res) => {
     .catch(err => res.status(400).json(`se obtuvo el siguiente error: ${err}`))
 })
 
-// const PORT = process.env.PORT
-const PORT = 3000
-app.listen(PORT, () => {
+const PORT = process.env.PORT
+// const PORT = 3000
+app.listen(PORT || 3000, () => {
     console.log(`la aplicacion face-recognition esta corriendo en el puerto ${PORT}`);
 })
 
