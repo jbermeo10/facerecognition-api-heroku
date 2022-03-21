@@ -14,17 +14,6 @@ const handleApiCall = (req, res) =>{
 
 const handleImage = (req, res, db) => {
     const { id } = req.body;
-    // let found = false;
-    // database.users.forEach(user => {
-    //     if (user.id === id) {
-    //         found = true;
-    //         user.entries++;
-    //         return res.json(user.entries);
-    //     }
-    // })
-    // if(!found) {
-    //     res.status(404).json('id de usuario no registrado en la db');
-    // }
     
     db('users').where('id', '=', id)
     .increment('entries', 1)

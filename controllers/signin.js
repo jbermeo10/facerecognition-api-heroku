@@ -3,41 +3,7 @@ const handleSignin = (db, bcrypt) => (req, res) => {
     if (!email || !password) {
         return res.status(400).json('No se permite datos en blanco');
     }
-    // // Load hash from your password DB.
-    // bcrypt.compare("apples", '$2a$10$WKrBJJXWHUDXK5GtaY6aI.KDSYop8TomZXLKneCqI5Nm6eFRNMO6y', function(err, resp) {
-    //     // res == true
-    //     console.log('first guess', resp);
-    // });
-    // bcrypt.compare("veggies", '$2a$10$WKrBJJXWHUDXK5GtaY6aI.KDSYop8TomZXLKneCqI5Nm6eFRNMO6y', function(err, resp) {
-    //     // res = false
-    //     console.log('second guess', resp);
-    // });
-
-    // Checking again every single user within database.users array
-    // let found = false;
-    // database.users.forEach((user) => {
-    //     if (user.email === req.body.email) {
-    //         found = true;
-    //         if (user.password === req.body.password) {
-    //             console.log('acceso exitoso');
-    //             return res.json(user);
-    //         } else {
-    //             return res.status(400).json('contraseña incorrecta');
-    //         }
-    //     }
-    // })
-    // if(!found) {
-    //     res.status(404).json('usuario no registrado en la db');
-    // }
-    // 
-    // Checking just again the first user 'John'
-    // if (req.body.email === database.users[0].email &&
-    //     req.body.password ===  database.users[0].password) {
-    //         console.log('acceso exitoso');
-    //         res.json(database.users[0]);
-    //     } else {
-    //         res.status(400).json('error datos incorrectos');
-    //     }
+    
     db.select('email', 'hash').from('login')
         .where('email', '=', email)
         .then(data => {

@@ -9,20 +9,17 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
+
 const db = knex({
     client: 'pg',
     connection: {
         connectionString: process.env.DATABASE_URL,
+        // comentar ssl para conexiones locales
         ssl: {
             rejectUnauthorized: false
         }
     }
   });
-
-// db.select('*').from('users') ===> this returns a promise
-// db.select('*').from('users').then(data => {
-//     console.log(data);
-// })
 
 const app = express();
 app.use(bodyParser.json());
@@ -64,39 +61,8 @@ app.delete('/deleteuser', (req, res) => {
 
 const PORT = process.env.PORT
 // const PORT = 3000
-app.listen(PORT || 3000, () => {
+app.listen(PORT, () => {
     console.log(`la aplicacion face-recognition esta corriendo en el puerto ${PORT}`);
 })
 
 // console.log(process.env)
-
-
-
-// OLD WAY - HARDCODED DATABASE
-// const database = {
-//     users: [
-//         {
-//             id:'123',
-//             name: 'John',
-//             email: 'john@gmail.com',
-//             password: 'cookies',
-//             entries: 0,
-//             joined: new Date()
-//         },
-//         {
-//             id:'124',
-//             name: 'Sally',
-//             email: 'sally@gmail.com',
-//             password: 'bananas',
-//             entries: 0,
-//             joined: new Date()
-//         }
-//     ],
-//     login: [
-//         {
-//             id: '987',
-//             hash: '',
-//             email: 'john@gmail.com'
-//         }
-//     ]
-// }

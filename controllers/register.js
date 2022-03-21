@@ -3,27 +3,8 @@ const handleRegister = (req, res, db, bcrypt) => {
     if (!email || !name || !password) {
         return res.status(400).json('No se permite datos en blanco');
     }
-    // Adding a user to database.users array
-    // database.users.push({
-    //     id: '125',
-    //     name: name,
-    //     email: email,
-    //     password: password,
-    //     entries: 0,
-    //     joined: new Date()
-    // })
-    // res.json(database.users[database.users.length-1]);
 
-    // Asynchronous way
-    // bcrypt.hash(password, null, null, function(err, hash) {
-    //     // Store hash in your password DB.
-    //     console.log(hash)
-    // });
-
-    // Synchronous way
     const hash = bcrypt.hashSync(password);
-    // bcrypt.compareSync("bacon", hash); // true
-    // bcrypt.compareSync("veggies", hash); // false
     
     db.transaction(trx => {
         trx.insert({

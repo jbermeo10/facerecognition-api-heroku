@@ -1,0 +1,4 @@
+ENVIRONMENT VARIABLES:
+PORT = 3000
+DATABASE_URL = "postgres://postgres:fiecapi@localhost:5432/smart-brain"
+API_CLARIFAI = "5b03a67ea9fc4b528a408c4c2e7fe778"
